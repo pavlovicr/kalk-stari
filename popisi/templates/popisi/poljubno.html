@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+
+<h1>Postavka</h1>
+
+    {% if seznam %}
+    <ul>
+
+      {% for postavka in seznam %}
+      <li>
+        <a href="{{ postavka.get_absolute_url }}">{{ postavka.opis_postavke }}</a> ({{postavka.enota_mere}} {{postavka.vrsta_del}})
+
+      {% for del in postavka.del_postavke.all %}
+        <a href="{{ postavka.get_absolute_url }}">{{ del.kratek_opis_dela_postavke }}</a>      
+
+      {% endfor %}
+ 
+
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Si na pravemu template.</p>
+    {% endif %}       
+
+
+{% endblock %}
+

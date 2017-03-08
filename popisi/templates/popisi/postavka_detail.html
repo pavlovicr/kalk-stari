@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+  <h1>Postavka: {{ postavka.kratek_opis_postavke }}</h1>
+
+  <p><strong>Vrsta del:</strong> <a href="">{{ postavka.vrsta_del }}</a></p> 
+  <p><strong>Opis postavke:</strong> {{ postavka.opis_postavke }}</p>
+  <p><strong>Enota mere:</strong> {{ postavka.enota_mere }}</p> 
+  <p><strong>Norma čas:</strong> {{ postavka.norma_cas }}</p>  
+  <p><strong>Splošna določila:</strong> {{ postavka.splošna_določila}}</p>  
+  <p><strong>Del postavke :</strong> {% for del in postavka.del_postavke.all %} <a href="">{{ del.opis_dela_postavke }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+
+
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Deli postavke</h4>
+
+    {% for a in postavka.deldrugace_set.all %}
+    <hr>
+    
+    <p><strong>Del postavke:</strong> {{a.kratek_opis_dela_postavke}}</p>
+    <p><strong>Splošna določila dela postavke:</strong> {{a.splošna_določila_dela_postavke}}</p>
+    <p class="text-muted"><strong>Id: dela postavke </strong> {{a.id}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}
