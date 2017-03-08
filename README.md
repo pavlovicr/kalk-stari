@@ -1,1 +1,2 @@
 # kalk
+počasi napredujemo
