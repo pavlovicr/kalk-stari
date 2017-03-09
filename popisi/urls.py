@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^postavke/$', views.PostavkaListView.as_view(), name='postavke'),
     url(r'^filter/$', views.PostavkaFilter.as_view(), name='filter'),
     url(r'^p/$', views.P.as_view(), name='p'),
-    url(r'^postavke/(?P<pk>\d+)/$',views.PostavkaDetailView.as_view(), name='postavka-podrobnosti'),
+    url(r'^postavke/(?P<pk>\d+)/$',views.PostavkaDetailView.as_view(), name='postavka-detail'),
 ]
