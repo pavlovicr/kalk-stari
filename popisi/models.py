@@ -1,21 +1,19 @@
 from django.db import models
 from django.urls import reverse
 
-#Gradbena,obrtniška
 class Zvrst(models.Model):
     
     naziv_zvrsti = models.CharField(max_length=200, help_text="Vnos skupine del(Gradbena,Obrtniška,..)")
-    splosna_dolocila_zvrsti = models.TextField(max_length=1000,help_text="Enter a brief description of the book")
+    splosna_dolocila_zvrsti = models.TextField(max_length=1000,help_text="")
     
     def __str__(self):
                         
         return self.naziv_zvrsti
 
-#Zemeljska,Zidarska,Betonska
 class Skupina(models.Model):
     
-    naziv_skupine = models.CharField(max_length=200, help_text="Vnos skupine del(Zemeljska,Zidarska,Betonska,)")
-    splosna_dolocila_skupine = models.TextField(max_length=1000,help_text="Enter a brief description of the book")
+    naziv_skupine = models.CharField(max_length=200, help_text="Vnos skupine del(Zemeljska,Zidarska,..)")
+    splosna_dolocila_skupine = models.TextField(max_length=1000,help_text="")
     zvrst = models.ForeignKey('Zvrst', on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
@@ -23,11 +21,10 @@ class Skupina(models.Model):
         return self.naziv_skupine
 
 
-#Izkopi,Zasipi,Odvozi
 class VrstaDel(models.Model):
     
-    naziv_vrste_del = models.CharField(max_length=200)
-    splosna_dolocila_vrste_del = models.TextField(max_length=1000,help_text="Enter a brief description of the book")
+    naziv_vrste_del = models.CharField(max_length=200,help_text="Vnos skupine del(Izkopi,Zasipi,..)")
+    splosna_dolocila_vrste_del = models.TextField(max_length=1000,help_text="")
     skupina = models.ForeignKey('Skupina', on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
@@ -37,7 +34,7 @@ class VrstaDel(models.Model):
     
     def get_absolute_url(self):
         
-        return reverse('vrsta_del-detajl', args=[str(self.id)])        
+        return reverse('vrsta_del-detail', args=[str(self.id)])   
 
 class DelPostavke(models.Model):
  
@@ -45,7 +42,7 @@ class DelPostavke(models.Model):
     opis_dela_postavke = models.TextField(max_length=1000)
     norma_cas = models.IntegerField(default=0) 
     #postavka = models.ManyToManyField(Postavka)
-    splosna_dolocila_dela_postavke = models.TextField(max_length=1000,help_text="Enter a brief description of the book")
+    splosna_dolocila_dela_postavke = models.TextField(max_length=1000,help_text="")
         
 
     def __str__(self):
@@ -57,12 +54,12 @@ class DelPostavke(models.Model):
 class Postavka(models.Model):
     
     kratek_opis = models.CharField(max_length=100)
-    opis_postavke = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
+    opis_postavke = models.TextField(max_length=1000, help_text="")
     enota_mere = models.CharField(max_length=100)
     norma_cas = models.IntegerField(default=0) 
     vrsta_del = models.ForeignKey('VrstaDel', on_delete=models.SET_NULL, null=True)
-    splosna_dolocila_postavke = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
-    del_postavke = models.ManyToManyField(DelPostavke, help_text="Select a genre for this book")  
+    splosna_dolocila_postavke = models.TextField(max_length=1000, help_text="")
+    del_postavke = models.ManyToManyField(DelPostavke, help_text="")  
    
 
     def __str__(self):

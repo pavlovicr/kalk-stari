@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+    <h1>Vrsta del</h1>
+
+    {% if vrstadel_list %}
+    <ul>
+
+      {% for vrstadel in vrstadel_list %}
+      <li>
+        <a href="{% url 'postavke' %}">{{ vrstadel.naziv_vrste_del }}</a> ({{vrstadel.skupina}} {{vrstadel.splosna_dolocila_vrste_del}})
+        <a href= "{{vrstadel.get_absolute_url}}">Vrsta del detajl</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no books in the library.</p>
+    {% endif %}       
+{% endblock %}

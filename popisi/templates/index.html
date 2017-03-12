@@ -3,16 +3,18 @@
 {% block vsebina %}
 <h1>STANDARDIZIRANI POPISI DEL</h1>
 
-  <p>Dobrodošli na <em>Standardizirane popise del</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
+  <p>Dobrodošli na <em>Standardizirani popisi del</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
 
 <h2>Dynamic content</h2>
 
   <p>The library has the following record counts:</p>
   <ul>
+
+{{skupina}}
+
     <li><strong>Zvrst:</strong> {{ zvrst }}</li>
     <li><strong>Skupina:</strong> {{ skupina }}</li>
     <li><strong>Postavka:</strong> {{ postavka }}</li>
     <li><strong>DelPostavke:</strong> {{ delpostavke }}</li>
-  </ul>
-
+  </ul >
 {% endblock %}

@@ -1,16 +1,26 @@
 
 from django.conf.urls import url
-from popisi.views import PostavkaListView,P,PostavkaFilter
-from popisi.views import PostavkaDetailView 
-
+from popisi.views import PostavkaListView,PostavkaFilter,VrstaDelListView,SkupinaListView,ZvrstListView
+from popisi.views import PostavkaDetailView,VrstaDelDetailView,SkupinaDetailView,ZvrstDetailView
 from . import views
 
 
 urlpatterns = [
+    
     url(r'^$', views.index, name='index'),
-    url(r'^[0-9]+/$', views.vaja, name='vaja'),
+        
     url(r'^postavke/$', views.PostavkaListView.as_view(), name='postavke'),
-    url(r'^filter/$', views.PostavkaFilter.as_view(), name='filter'),
-    url(r'^p/$', views.P.as_view(), name='p'),
-    url(r'^postavke/(?P<pk>\d+)/$',views.PostavkaDetailView.as_view(), name='postavka-detail'),
-]
+    url(r'^postavka_detail/(?P<pk>\d+)/$',views.PostavkaDetailView.as_view(), name='postavka-detail'),
+    url(r'^postavka_filter/$', views.PostavkaFilter.as_view(), name='filter'),
+    
+    url(r'^vrsta_del/$', views.VrstaDelListView.as_view(), name='vrsta_del'),
+    url(r'^vrsta_del_detail(?P<pk>\d+)$',views.VrstaDelDetailView.as_view(), name='vrsta_del-detail'),
+
+    url(r'^skupina/$', views.SkupinaListView.as_view(), name='skupina'),
+    url(r'^skupina_detail(?P<pk>\d+)$',views.SkupinaDetailView.as_view(), name='skupina-detail'),
+
+    url(r'^zvrst/$', views.ZvrstListView.as_view(), name='zvrst'),
+    url(r'^zvrst_detail(?P<pk>\d+)$',views.ZvrstDetailView.as_view(), name='zvrst-detail'),
+
+
+]    
