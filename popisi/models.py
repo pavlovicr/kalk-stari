@@ -9,6 +9,8 @@ class Zvrst(models.Model):
     def __str__(self):
                         
         return self.naziv_zvrsti
+    def get_absolute_url(self):
+        return reverse('zvrst-detail', args=[str(self.id)])   
 
 class Skupina(models.Model):
     
@@ -19,6 +21,8 @@ class Skupina(models.Model):
     def __str__(self):
                         
         return self.naziv_skupine
+    def get_absolute_url(self):
+        return reverse('skupina-detail', args=[str(self.id)])   
 
 
 class VrstaDel(models.Model):
@@ -30,10 +34,8 @@ class VrstaDel(models.Model):
     def __str__(self):
         
         return self.naziv_vrste_del
-    
-    
-    def get_absolute_url(self):
         
+    def get_absolute_url(self):
         return reverse('vrsta_del-detail', args=[str(self.id)])   
 
 class DelPostavke(models.Model):
@@ -49,6 +51,9 @@ class DelPostavke(models.Model):
     
         return '%s' % (self.kratek_opis_dela_postavke)
 
+    def get_absolute_url(self):
+        
+        return reverse('del_postavke-detail', args=[str(self.id)])   
 
 
 class Postavka(models.Model):

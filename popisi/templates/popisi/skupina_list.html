@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+    <h1>Skupina</h1>
+
+    {% if skupina_list %}
+    <ul>
+      {% for s in skupina_list %}
+      <li>
+        <a href="{% url 'vrsta_del' %}">{{ s.naziv_skupine}}</a> 
+      {% endfor %}
+       </li>
+    </ul>
+    {% else %}
+      <p>Ni vnosa.</p>
+    {% endif %}       
+
+{% endblock %}
+

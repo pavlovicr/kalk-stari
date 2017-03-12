@@ -7,14 +7,14 @@
 
 <h2>Dynamic content</h2>
 
-  <p>The library has the following record counts:</p>
+  <p>Vsebina:</p>
   <ul>
-
-{{skupina}}
-
-    <li><strong>Zvrst:</strong> {{ zvrst }}</li>
-    <li><strong>Skupina:</strong> {{ skupina }}</li>
-    <li><strong>Postavka:</strong> {{ postavka }}</li>
-    <li><strong>DelPostavke:</strong> {{ delpostavke }}</li>
+    
+    <li><strong>Zvrst:</strong> {{zvrst1}}</li>
+    <li><strong>Zvrst:</strong> {% for e in zvrst %}{{e.naziv_zvrsti}}{%endfor%}</li>
+    <li><strong>Skupina:</strong>{% for e in skupina %} {{ e.naziv_skupine }}{%endfor%}</li>
+    <li><strong>Vrsta del:</strong> {% for e in vrstadel %}{{e.naziv_vrste_del }}{%endfor%}</li>
+    <li><strong>Postavka:</strong> {% for e in postavka %}{{e.opis_postavke }}{%endfor%}</li>
+    <li><strong>DelPostavke:</strong>{% for e in delpostavke %}{{ e.opis_dela_postavke }}{%endfor%}</li>
   </ul >
 {% endblock %}

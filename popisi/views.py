@@ -6,6 +6,7 @@ from django.views.generic import DetailView
 from .models import Zvrst,Skupina,VrstaDel,Postavka,DelPostavke
 
 def index(request):
+    zvrst1=list(Zvrst.objects.all())
     zvrst=Zvrst.objects.all()
     skupina=Skupina.objects.all()
     vrstadel=VrstaDel.objects.all()
@@ -14,7 +15,7 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={'zvsrst':zvrst,'skupina':skupina,'vrstadel':vrstadel,'postavka':postavka,'delpostavke':delpostavke,},
+        context={'zvrst1':zvrst1,'zvrst':zvrst,'skupina':skupina,'vrstadel':vrstadel,'postavka':postavka,'delpostavke':delpostavke,},
     )
 class PostavkaListView(generic.ListView):
     model = Postavka   
