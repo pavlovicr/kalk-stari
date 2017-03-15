@@ -17,16 +17,15 @@ def index(request):
         'index.html',
         context={'zvrst1':zvrst1,'zvrst':zvrst,'skupina':skupina,'vrstadel':vrstadel,'postavka':postavka,'delpostavke':delpostavke,},
     )
-class PostavkaListView(generic.ListView):
-    model = Postavka   
-#poleg osnovnega dodamo še seznam in vaja1 , vaja in vaja2 
-    def get_context_data(self, **kwargs):
-        context = super(PostavkaListView, self).get_context_data(**kwargs)
-        context['seznam'] = Postavka.objects.filter(opis_postavke__icontains='izkop')[:1]
-        context['vaja1'] = "Tekst Vaja 1"
-        context['vaja'] = Postavka.objects.filter(opis_postavke__icontains='izkop')[:3]
-        context['vaja2'] = "Tekst Vaja 2"
-        return context
+#class PostavkaListView(generic.ListView):
+#    model = Postavka   
+#    def get_context_data(self, **kwargs):
+#        context = super(PostavkaListView, self).get_context_data(**kwargs)
+#        context['seznam'] = Postavka.objects.filter(opis_postavke__icontains='izkop')[:1]
+#        context['vaja1'] = "Tekst Vaja 1"
+#        context['vaja'] = Postavka.objects.filter(opis_postavke__icontains='izkop')[:3]
+#        context['vaja2'] = "Tekst Vaja 2"
+#        return context
 class PostavkaFilter(generic.ListView):
     model = Postavka   
     def get_queryset(self):
@@ -34,13 +33,22 @@ class PostavkaFilter(generic.ListView):
 class PostavkaDetailView(generic.DetailView):
     model = Postavka       
 
-class VrstaDelListView(generic.ListView):
-    model = VrstaDel       
+class DelPostavkeDetailView(generic.DetailView):
+    model = DelPostavke       
+
+
+
+
+
+
+
+#class VrstaDelListView(generic.ListView):
+#    model = VrstaDel       
 class VrstaDelDetailView(generic.DetailView):
     model = VrstaDel           
 
-class SkupinaListView(generic.ListView):
-    model = Skupina       
+#class SkupinaListView(generic.ListView):
+#    model = Skupina       
 class SkupinaDetailView(generic.DetailView):
     model = Skupina           
 

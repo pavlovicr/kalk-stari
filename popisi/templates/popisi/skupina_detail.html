@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+  
+  <h1>Vrsta del: {{skupina.splosna_dolocila_skupine }}</h1>
+
+<ul>
+{% for a in skupina.vrstadel_set.all %}
+    <a href="{{ a.get_absolute_url }}"><li>{{ a.naziv_vrste_del }}</li></a>
+    
+{% endfor %}
+</ul>
+
+
+{% endblock %}

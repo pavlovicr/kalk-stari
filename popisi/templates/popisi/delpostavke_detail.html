@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+  
+  <h1>Del postavke: {{delpostavke.opis_dela_postavke}}{{delpostavke.splosna_dolocila_dela_postavke }}</h1>
+
+<ul>
+POSTAVKE, KI VKLJUČUJEJO TA DEL POSTAVKE
+
+{% for a in delpostavke.postavka_set.all %}
+    <a href="{{ a.get_absolute_url }}"><li>{{ a.opis_postavke }}</li></a>
+    
+{% endfor %}
+</ul>
+
+<form action="/team_name_url/" method="post">
+    <label for="team_name">Enter name: </label>
+    <input id="team_name" type="text" name="ime polja" value="ime nečesa.">
+    <input type="submit" value="OK">
+</form>
+
+  
+{% endblock %}
+

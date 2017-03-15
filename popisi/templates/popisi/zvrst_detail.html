@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+  
+  <h1>Zvrst: {{zvrst.splosna_dolocila_zvrsti }}</h1>
+
+<ul>
+{% for a in zvrst.skupina_set.all %}
+    <a href="{{ a.get_absolute_url }}"><li>{{ a.naziv_skupine }}</li></a>
+    
+{% endfor %}
+</ul>
+
+
+  
+{% endblock %}

@@ -3,5 +3,14 @@
 {% block vsebina %}
   
   <h1>Vrsta del: {{vrstadel.splosna_dolocila_vrste_del }}</h1>
+
+<ul>
+{% for a in vrstadel.postavka_set.all %}
+    <a href="{{ a.get_absolute_url }}"><li>{{ a.opis_postavke }}</li></a>
+    
+{% endfor %}
+</ul>
+
   
 {% endblock %}
+
