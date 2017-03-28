@@ -4,7 +4,7 @@ from django.urls import reverse
 class Zvrst(models.Model):
     
     naziv_zvrsti = models.CharField(max_length=200, help_text="Vnos skupine del(Gradbena,Obrtniška,..)")
-    splosna_dolocila_zvrsti = models.TextField(max_length=1000,help_text="")
+    splosna_dolocila_zvrsti = models.TextField(max_length=1000,default="splošna določila zvrsti")
     
     def __str__(self):
                         
@@ -15,7 +15,7 @@ class Zvrst(models.Model):
 class Skupina(models.Model):
     
     naziv_skupine = models.CharField(max_length=200, help_text="Vnos skupine del(Zemeljska,Zidarska,..)")
-    splosna_dolocila_skupine = models.TextField(max_length=1000,help_text="")
+    splosna_dolocila_skupine = models.TextField(max_length=1000,default="SKUPINA")
     zvrst = models.ForeignKey('Zvrst', on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
@@ -28,7 +28,7 @@ class Skupina(models.Model):
 class VrstaDel(models.Model):
     
     naziv_vrste_del = models.CharField(max_length=200,help_text="Vnos skupine del(Izkopi,Zasipi,..)")
-    splosna_dolocila_vrste_del = models.TextField(max_length=1000,help_text="")
+    splosna_dolocila_vrste_del = models.TextField(max_length=1000,default="splosšna določila vrste del")
     skupina = models.ForeignKey('Skupina', on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
@@ -44,7 +44,7 @@ class DelPostavke(models.Model):
     opis_dela_postavke = models.TextField(max_length=1000)
     norma_cas = models.IntegerField(default=0) 
     #postavka = models.ManyToManyField(Postavka)
-    splosna_dolocila_dela_postavke = models.TextField(max_length=1000,help_text="")
+    splosna_dolocila_dela_postavke = models.TextField(max_length=1000,help_text="",null=True)
         
 
     def __str__(self):
@@ -63,8 +63,8 @@ class Postavka(models.Model):
     enota_mere = models.CharField(max_length=100)
     norma_cas = models.IntegerField(default=0) 
     vrsta_del = models.ForeignKey('VrstaDel', on_delete=models.SET_NULL, null=True)
-    splosna_dolocila_postavke = models.TextField(max_length=1000, help_text="")
-    del_postavke = models.ManyToManyField(DelPostavke, help_text="")  
+    splosna_dolocila_postavke = models.TextField(max_length=1000, default="miha")
+    del_postavke = models.ManyToManyField(DelPostavke)  
    
 
     def __str__(self):
@@ -74,6 +74,8 @@ class Postavka(models.Model):
     def get_absolute_url(self):
         
         return reverse('postavka-detail', args=[str(self.id)])        
+
+
 
 
 

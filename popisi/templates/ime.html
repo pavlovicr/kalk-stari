@@ -1,0 +1,7 @@
+<form action="{% url 'tvoje-ime' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Potrdi"/>
+</form>    
+
+<tr><th><label for="id_tvoje_ime">vaše uporabniško ime:</label></th><td><input id="id_tvoje_ime" maxlength="10" name="tvoje_ime" type="text" value="jajca" required /></td></tr>

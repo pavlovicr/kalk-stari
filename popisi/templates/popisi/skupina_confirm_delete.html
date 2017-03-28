@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+
+<h1>Odstrani Skupino</h1>
+
+<p>Ali res želiš odstraniti to skupino: {{ skupina }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" action="" value="Da, odstrani." />
+</form>
+
+{% endblock %}

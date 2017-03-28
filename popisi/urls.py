@@ -30,5 +30,19 @@ urlpatterns = [
     url(r'^zvrst/$', views.ZvrstListView.as_view(), name='zvrst'),
     url(r'^zvrst_detail(?P<pk>\d+)$',views.ZvrstDetailView.as_view(), name='zvrst-detail'),
 
+]
 
-]    
+urlpatterns += [  
+    url(r'^skupina/nova/$', views.SkupinaCreate.as_view(), name='skupina_nova'),
+    url(r'^skupina/(?P<pk>\d+)/popravi/$', views.SkupinaUpdate.as_view(), name='skupina_popravi'),
+    url(r'^skupina/(?P<pk>\d+)/odstrani/$', views.SkupinaDelete.as_view(), name='skupina_odstrani'),
+]
+
+
+
+#vaje lahko zbrises
+
+urlpatterns += [  
+    url(r'^a/$', views.get_ime, name='tvoje-ime'),
+    url(r'^skupina/$', views.get_skupina, name='skupina'),
+]

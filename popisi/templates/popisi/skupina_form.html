@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block vsebina %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_ul }}
+    </table>
+    <input type="submit" value="Potrdi" />
+    
+</form>
+{% endblock %}
